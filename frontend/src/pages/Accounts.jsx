@@ -118,7 +118,10 @@ const Accounts = () => {
                         <p className="text-gray-600">No transactions available.</p>
                     ) : (
                         <ul>
-                             <li>Current Balance: ₹{balance}</li>
+                             <li className="text-xl font-semibold text-blue-700">
+                              Current Balance: <span className="text-green-600">₹{balance}</span>
+                              </li>
+                            <hr className="my-4 border-t-2 border-blue-200" />
                             {transactions.map((tx, index) => (
                                 <li key={index} className="border-b py-2 text-gray-700">
                                     <span
