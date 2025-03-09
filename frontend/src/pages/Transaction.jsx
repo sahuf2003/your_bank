@@ -16,7 +16,7 @@ const Transaction = () => {
 
   useEffect(() => {
     if (!token || !customer_id) {
-      navigate("/login");
+      navigate("/");
     }
   }, [token, customer_id, navigate]);
 
