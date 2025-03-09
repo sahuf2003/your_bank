@@ -20,7 +20,7 @@ const Transaction = () => {
     }
   }, [token, customer_id, navigate]);
 
-  // Fetch transactions & balance
+
   const fetchTransactions = useCallback(async () => {
     if (!token || !customer_id) return;
 

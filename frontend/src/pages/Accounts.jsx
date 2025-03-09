@@ -7,6 +7,7 @@ const Accounts = () => {
     const [customers, setCustomers] = useState([]);
     const [selectedCustomer, setSelectedCustomer] = useState(null);
     const [transactions, setTransactions] = useState([]);
+    const [balance, setBalance] = useState(0);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -50,7 +51,7 @@ const Accounts = () => {
 
             const data = await response.json();
             if (!response.ok) throw new Error(data.message || "Failed to fetch transactions");
-
+            setBalance(data.current_balance);
             setTransactions(data.transactions);
         } catch (err) {
             setError(err.message);
@@ -117,6 +118,7 @@ const Accounts = () => {
                         <p className="text-gray-600">No transactions available.</p>
                     ) : (
                         <ul>
+                             <li>Current Balance: ₹{balance}</li>
                             {transactions.map((tx, index) => (
                                 <li key={index} className="border-b py-2 text-gray-700">
                                     <span
