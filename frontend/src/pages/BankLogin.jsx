@@ -74,10 +74,6 @@ const BankLogin = () => {
                     </button>
                 </form>
                 <p className="text-center text-sm mt-4">
-                    Don't have an account?{" "}
-                    <a href="/register" className="text-blue-500 hover:underline">
-                        Register here
-                    </a>
                     <br />
                     for testing <br />
                     email: admin@gmail.com <br />
