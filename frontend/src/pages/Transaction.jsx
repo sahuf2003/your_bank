@@ -90,7 +90,7 @@ const Transaction = () => {
 
       localStorage.removeItem("token");
       localStorage.removeItem("customer_id");
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       setError(err.message);
     }
