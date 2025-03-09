@@ -9,7 +9,9 @@ A banking system built with **React.js**, **Node.js/Express**, and **MySQL**. Th
 - **Frontend**: React.js, Tailwind CSS
 - **Backend**: Node.js, Express.js
 - **Database**: MySQL (FreeSQLDatabase.com)
-- **Deployment**: Vercel (frontend), Render.com (backend)
+- **Deployment**:
+-  Vercel (frontend) https://enpointe-assignment-ivory.vercel.app/ ,
+-  Render.com (backend) https://enpointe-assignment.onrender.com/
 
 ---
 
