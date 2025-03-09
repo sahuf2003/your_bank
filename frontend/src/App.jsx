@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom"
 import LandingPage from "./components/LandingPage"
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import TransactionPage from "./pages/TransactionPage";
 import Transaction from "./pages/Transaction";
 import BankLogin from "./pages/BankLogin";
 import Accounts from "./pages/Accounts";
