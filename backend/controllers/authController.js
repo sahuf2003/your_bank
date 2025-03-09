@@ -31,15 +31,32 @@ exports.login = (req, res) => {
         }
 
         const accessToken = generateAccessToken();
-        User.updateAccessToken(results[0].id, accessToken, () => {
-            res.json({ message: 'Login successful', accessToken });
+        const customerId = results[0].id;
+        const userType = results[0].type; 
+
+        User.updateAccessToken(customerId, accessToken, () => {
+            res.json({
+                message: 'Login successful',
+                accessToken,
+                customer_id: customerId,
+                user_type: userType 
+            });
         });
     });
 };
 
+
+
 exports.logout = (req, res) => {
-    const { accessToken } = req.body;
-    User.clearAccessToken(accessToken, () => {
-        res.json({ message: 'Logout successful' });
+    const { userId } = req.body;
+    if (!userId) {
+        return res.status(400).json({ error: "User ID is required" });
+    }
+
+    User.clearAccessToken(userId, (err) => {
+        if (err) {
+            return res.status(500).json({ error: "Failed to log out" });
+        }
+        res.json({ message: "Logout successful" });
     });
 };

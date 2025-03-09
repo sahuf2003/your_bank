@@ -21,9 +21,9 @@ const User = {
         connection.query('UPDATE users SET access_token = ? WHERE id = ?', [token, userId], callback);
     },
 
-    clearAccessToken: (accessToken, callback) => {
-        connection.query('UPDATE users SET access_token = NULL WHERE access_token = ?', [accessToken], callback);
-    }
+    clearAccessToken: (userId, callback) => {
+        connection.query('UPDATE users SET access_token = NULL WHERE id = ?', [userId], callback);
+    }    
 };
 
 module.exports = User;
