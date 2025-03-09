@@ -4,7 +4,11 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 const cors = require('cors');
-app.use(cors({ origin: '*' })); 
+app.use(cors({
+  origin: 'https://enpointe-assignment-ivory.vercel.app', 
+  methods: ['GET', 'POST'],
+  credentials: true, 
+}));
 
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api', require('./routes/transactionRoutes'));
