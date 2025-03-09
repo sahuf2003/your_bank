@@ -66,7 +66,7 @@ const Accounts = () => {
             });
 
             localStorage.removeItem("token");
-            navigate("/banklogin");
+            navigate("/");
         } catch (err) {
             console.error("Logout failed", err);
         }
