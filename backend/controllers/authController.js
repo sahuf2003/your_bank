@@ -1,3 +1,7 @@
+const crypto = require('crypto');
+const User = require('../models/userModel');
+const generateAccessToken = () => crypto.randomBytes(18).toString('hex');
+
 exports.register = (req, res) => {
     const { name, email, password, type } = req.body;
 
@@ -6,18 +10,12 @@ exports.register = (req, res) => {
     }
 
     User.findByEmail(email, (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: 'Database error: ' + err.message });
-        }
-    
-        if (!results || results.length > 0) {
+        if (results.length > 0) {
             return res.status(400).json({ error: 'Email already registered' });
         }
 
         User.register(name, email, password, type, (err, result) => {
-            if (err) {
-                return res.status(500).json({ error: 'Database error: ' + err.message });
-            }
+            if (err) return res.status(500).json({ error: 'Database error' });
             res.status(201).json({ message: 'User registered successfully', userId: result.insertId });
         });
     });
@@ -27,11 +25,7 @@ exports.login = (req, res) => {
     const { email, password } = req.body;
 
     User.findByEmail(email, (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: 'Database error: ' + err.message });
-        }
-
-        if (!results || results.length === 0 || results[0].password !== password) {
+        if (results.length === 0 || results[0].password !== password) {
             return res.status(401).json({ error: 'Invalid email or password' });
         }
 
@@ -49,6 +43,8 @@ exports.login = (req, res) => {
         });
     });
 };
+
+
 
 exports.logout = (req, res) => {
     const { userId } = req.body;
