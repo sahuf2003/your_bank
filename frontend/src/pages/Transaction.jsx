@@ -25,7 +25,7 @@ const Transaction = () => {
     if (!token || !customer_id) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/transaction?customer_id=${customer_id}`, {
+      const response = await fetch(`https://enpointe-assignment.onrender.com/api/transaction?customer_id=${customer_id}`, {
         method: "GET",
         headers: { "Authorization": token },
       });
@@ -44,7 +44,7 @@ const Transaction = () => {
     fetchTransactions();
   }, [fetchTransactions]);
 
-  // Handle deposit/withdraw
+  
   const handleTransaction = async (type) => {
     if (!amount || isNaN(amount) || amount <= 0) {
       setError("Enter a valid amount");
@@ -57,7 +57,7 @@ const Transaction = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/transaction", {
+      const response = await fetch("https://enpointe-assignment.onrender.com/api/transaction", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Transaction = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/auth/logout", {
+      const response = await fetch("https://enpointe-assignment.onrender.com/api/auth/logout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: customer_id }),

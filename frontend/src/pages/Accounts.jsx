@@ -20,7 +20,7 @@ const Accounts = () => {
 
         const fetchCustomers = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/customers", {
+                const response = await fetch("https://enpointe-assignment.onrender.com/api/customers", {
                     method: "GET",
                     headers: { "Authorization": token },
                 });
@@ -43,7 +43,7 @@ const Accounts = () => {
             setTransactions([]);
             setError(null);
 
-            const response = await fetch(`http://localhost:3000/api/transaction?customer_id=${customerId}`, {
+            const response = await fetch(`https://enpointe-assignment.onrender.com/api/transaction?customer_id=${customerId}`, {
                 method: "GET",
                 headers: { "Authorization": token },
             });
@@ -59,7 +59,7 @@ const Accounts = () => {
 
     const handleLogout = async () => {
         try {
-            await fetch("http://localhost:3000/api/auth/logout", {
+            await fetch("https://enpointe-assignment.onrender.com/api/auth/logout", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token }),
